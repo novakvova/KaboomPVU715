@@ -21,7 +21,14 @@ public class AppleTree : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        //Скидання яблука раз в секунду
+        Invoke("DropApple", 2f);
+    }
+    void DropApple()
+    {
+        GameObject apple = Instantiate<GameObject>(applePrefab);
+        apple.transform.position = transform.position; //позиція яблука рівна позиції яблуні
+        Invoke("DropApple", secondsBetweenAppleDrops);  //кожну секунду буде скидатися нове яблуко
     }
 
     // Update is called once per frame
